@@ -45,23 +45,33 @@ export default function RootLayout({
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" href="/CalendarioEscolar">
+                  <Link className="nav-link" href="/Login">
                     Calendario escolar
                   </Link>
                 </li>
+
+{/*
+
                 <li className="nav-item">
                   <Link className="nav-link" href="/Login">
                     Login
                   </Link>
                 </li>
+
+*/}
+
                 <li className="nav-item">
-                  <Link className="nav-link" href="/actividades">
+                  <Link className="nav-link" href="/loginmaestros">
                     Actividades
                   </Link>
                 </li>
-
-
-
+{/*
+                <li className="nav-item">
+                  <Link className="nav-link" href="/loginmaestros">
+                    login maestros
+                  </Link>
+                </li>
+*/}
                 
               </ul>
             </div>

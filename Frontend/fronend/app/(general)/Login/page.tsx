@@ -21,9 +21,11 @@ const LoginPage = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                // Verificar el tipo de usuario y redirigir según sea necesario
+                // Almacenar el tipo de usuario y redirigir
                 if (data.tipoUsuario === "admin" || data.tipoUsuario === "padre" || data.tipoUsuario === "maestro") {
-                    router.push("/general/2/graficas");
+                    // Guardar el tipo de usuario en localStorage o estado global
+                    localStorage.setItem("tipoUsuario", data.tipoUsuario);
+                    router.push("/actividades"); // Redirige al calendario
                 } else {
                     setError("Tipo de usuario no autorizado");
                 }
