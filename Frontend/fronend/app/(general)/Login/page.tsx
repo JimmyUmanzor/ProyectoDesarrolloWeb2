@@ -4,34 +4,31 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
-    const [idUsuario, setIdUsuario] = useState("");
-    const [clave, setClave] = useState("");
-    const [error, setError] = useState("");
+    const [idUsuario, setIdUsuario] = useState<string>("");
+    const [clave, setClave] = useState<string>("");
+    const [error, setError] = useState<string>("");
     const router = useRouter();
 
-    const handleLogin = async (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:5000/usuarios", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ idUsuario, clave }),
-            });
+            // Hacer una petición GET con el idUsuario
+            const response = await fetch(`http://localhost:5000/usuarios/${idUsuario}`);
 
             if (response.ok) {
                 const data = await response.json();
-                // Almacenar el tipo de usuario y redirigir
-                if (data.tipoUsuario === "admin" || data.tipoUsuario === "padre" || data.tipoUsuario === "maestro") {
-                    // Guardar el tipo de usuario en localStorage o estado global
-                    localStorage.setItem("tipoUsuario", data.tipoUsuario);
-                    router.push("/actividades"); // Redirige al calendario
+                
+                // Validar si la clave coincide
+                if (data && data.clave === clave) {
+                    // Redirige a la página de actividades si el usuario y la clave son correctos
+                    router.push("/actividades");
                 } else {
-                    setError("Tipo de usuario no autorizado");
+                    setError("Credenciales incorrectas");
                 }
             } else {
                 const data = await response.json();
-                setError(data.error || "Error en las credenciales");
+                setError(data.error || "Error al obtener usuario");
             }
         } catch (err) {
             setError("Error al conectar con el servidor");
