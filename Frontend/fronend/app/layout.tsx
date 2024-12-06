@@ -9,7 +9,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   useEffect(() => {
     require('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
@@ -55,6 +54,15 @@ export default function RootLayout({
                     Login
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/actividades">
+                    Actividades
+                  </Link>
+                </li>
+
+
+
+                
               </ul>
             </div>
           </div>
