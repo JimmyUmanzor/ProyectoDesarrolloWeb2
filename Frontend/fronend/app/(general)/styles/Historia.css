@@ -1,0 +1,56 @@
+.Card_Personalizadas {
+  max-height: auto; 
+  width: 100%; 
+  object-fit: cover; 
+}
+
+
+.Card_TextoP {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+ 
+  display: -moz-box; 
+  display: -ms-flexbox;
+  -ms-overflow-style: none; 
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 3; 
+  
+  height: 100px; 
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; 
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.card-text {
+  margin-bottom: 0; 
+}
+
+.centrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  margin-bottom: 20px;
+}
+
+.Titulos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+}
