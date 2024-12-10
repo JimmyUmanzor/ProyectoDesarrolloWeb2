@@ -3,13 +3,13 @@
 import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from 'next/link';
+import Historia from './(general)/InfoEscuela/page';
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
   useEffect(() => {
     require('bootstrap/dist/js/bootstrap.bundle.min.js');
   }, []);
@@ -36,13 +36,13 @@ export default function RootLayout({
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link className="nav-link" href="/">
+                  <Link className="nav-link" href="/InfoEscuela">
                     Inicio
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" href="/InfoEscuela">
-                    Sobre la Escuela
+                    Historia
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -55,6 +55,15 @@ export default function RootLayout({
                     Login
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/actividades">
+                    Actividades
+                  </Link>
+                </li>
+
+
+
+                
               </ul>
             </div>
           </div>
