@@ -1,5 +1,4 @@
-"use client";
-
+'use client'
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -22,7 +21,7 @@ const LoginPage = () => {
             if (response.ok) {
                 const data = await response.json();
                 // Verificar el tipo de usuario y redirigir según sea necesario
-                if (data.tipoUsuario === "admin" || data.tipoUsuario === "padre" || data.tipoUsuario === "maestro") {
+                if (data.tipoUsuario === "Admin" || data.tipoUsuario === "Padre" || data.tipoUsuario === "Maestro") {
                     router.push("/general/2/graficas");
                 } else {
                     setError("Tipo de usuario no autorizado");
