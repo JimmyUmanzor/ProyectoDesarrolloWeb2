@@ -22,7 +22,7 @@ const LoginPage = () => {
                 const data = await response.json();
                 // Verificar el tipo de usuario y redirigir según sea necesario
                 if (data.tipoUsuario === "Admin" || data.tipoUsuario === "Padre" || data.tipoUsuario === "Maestro") {
-                    router.push("/general/2/graficas");
+                    router.push("/actividades");
                 } else {
                     setError("Tipo de usuario no autorizado");
                 }

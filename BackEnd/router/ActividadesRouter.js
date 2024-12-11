@@ -1,16 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const { getActividades, 
+const { 
+    getActividades, 
     getActividadById, 
     crearActividad, 
     modificarActividad, 
-    eliminarActividad } = require ('../controller/ActividadesController');
+    eliminarActividad 
+} = require('../controller/ActividadesController');
 
-router.get('/', getActividades)
-router.get('/:id', getActividadById)
-router.post('/', crearActividad)
-router.put('/:id', modificarActividad)
-router.delete('/:id', eliminarActividad)
+// Ruta para obtener todas las actividades
+router.get('/', getActividades);
 
+// Ruta para obtener una actividad por su id
+router.get('/:id', getActividadById);
 
-module.exports = router
+// Ruta para crear una nueva actividad
+router.post('/', crearActividad);
+
+// Ruta para modificar una actividad existente
+router.put('/:id', modificarActividad);
+
+// Ruta para eliminar una actividad
+router.delete('/:id', eliminarActividad);
+
+module.exports = router;
