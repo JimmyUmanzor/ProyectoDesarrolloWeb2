@@ -9,15 +9,29 @@ exports.getUsuarios = async (req, res) => {
     }
 };
 
+
 exports.getUsuarioById = async (req, res) => {
-    const { idUsuario } = req.params;
+    const { idUsuario, clave } = req.body;
+
+    if (!idUsuario || !clave) {
+        return res.status(400).json({ error: 'Usuario y clave son requeridos' });
+    }
+
     try {
-        const usuario = await Usuarios.findByPk(idUsuario);
+        const usuario = await Usuarios.findOne({
+            where: {
+                idUsuario,
+                clave,
+            },
+        });
+
         if (!usuario) {
-            return res.status(404).json({ error: 'Usuario no encontrado' });
+            return res.status(404).json({ error: 'Usuario o clave incorrectos' });
         }
+
         res.json(usuario);
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener usuario' });
+        console.error(error);
+        res.status(500).json({ error: 'Error al buscar el usuario' });
     }
 };

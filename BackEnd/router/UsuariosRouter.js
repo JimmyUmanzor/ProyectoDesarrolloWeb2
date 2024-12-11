@@ -5,7 +5,8 @@ const { getUsuarios,
 
 
 router.get('/', getUsuarios)
-router.get('/:id', getUsuarioById)
+router.get('/:idUsuario', getUsuarioById);
+router.post('/', getUsuarioById)
 
 
 module.exports = router
