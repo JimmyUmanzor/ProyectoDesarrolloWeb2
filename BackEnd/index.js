@@ -1,23 +1,31 @@
-const bodyParser = require('body-parser')
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const ActividadesRouter = require('./router/ActividadesRouter');
 const AlumnosRouter = require('./router/AlumnosRouter');
 const MaestroRouter = require('./router/MaestroRouter');
 const UsuariosRouter = require('./router/UsuariosRouter');
 const cors = require('cors');
 
-var puerto=5000;
+// Configuración del puerto
+const puerto = 5000;
 
+// Middlewares
 app.use(cors());
-app.use(bodyParser.json())
+app.use(express.json());  // Usando express.json() en lugar de body-parser
 
-app.use('/actividades',ActividadesRouter);
-app.use('/alumnos',AlumnosRouter);
-app.use('/maestros',MaestroRouter);
-app.use('/usuarios',UsuariosRouter);
+// Rutas
+app.use('/actividades', ActividadesRouter);
+app.use('/alumnos', AlumnosRouter);
+app.use('/maestros', MaestroRouter);
+app.use('/usuarios', UsuariosRouter);
 
+// Manejo de errores - Middleware global
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Algo salió mal' });
+});
 
-app.listen(puerto,()=>{
-    console.log('Ejecutando en puerto 5000')
+// Iniciar servidor
+app.listen(puerto, () => {
+    console.log(`Servidor ejecutándose en el puerto ${puerto}`);
 });
